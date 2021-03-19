@@ -1,3 +1,4 @@
+import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:ocion/Constants.dart';
 import 'package:ocion/components/CustomTextField.dart';
@@ -13,13 +14,20 @@ class _calculateVolumeState extends State<calculateVolume> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    String volumeInLiters = '6545 Liter';
-    String volumeInMilliLiter = '5555 MilliLiter';
-    String volumeInGallons = '56685 Gallons';
+    String volumeInLiters = '6545 L';
+    String volumeInMilliLiter = '5555 FL. OZ.';
+    String volumeInGallons = '56685 ml.';
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xffffffff),
-
+        appBar: AppBar(
+          backgroundColor: basicColor,
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
+          title: Text("Home"),
+          centerTitle: true,
+        ),
         // appBar: customAppBar1("Sign In"),
 
         body: SingleChildScrollView(
@@ -44,28 +52,10 @@ class _calculateVolumeState extends State<calculateVolume> {
                 Form(
                     child: Column(
                   children: [
-                    Center(
-                      child: RichText(
-                        textAlign: TextAlign.left,
-                        text: TextSpan(
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: 'OCION BLUE ',
-                                style: TextStyle(
-                                    color: Color(0xff324980),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: height / 40)),
-                            TextSpan(
-                              text: 'Calculator',
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: height / 40),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+
+                    Text("OCION BLUE\u{2122}Calculator",
+                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: height/45, color: basicColor),
+                      textAlign: TextAlign.center,),
                     SizedBox(
                       height: height / 60,
                     ),
@@ -94,7 +84,8 @@ class _calculateVolumeState extends State<calculateVolume> {
                           },
                           items: _product.map((location) {
                             return DropdownMenuItem(
-                              child: Text(location),
+
+                              child: Text(location,),
                               value: location,
                             );
                           }).toList(),
@@ -141,7 +132,7 @@ class _calculateVolumeState extends State<calculateVolume> {
                     ),
                     Center(
                       child: CustomTextField(
-                        hinttext: "Enter volume of water to be treated",
+                        hinttext: "Enter the volume to be treated",
                         obscureText: false,
                         textInputType: TextInputType.number,
                       ),
@@ -153,7 +144,7 @@ class _calculateVolumeState extends State<calculateVolume> {
                 ),
                 Center(
                   child: CustomTextField(
-                    hinttext: "Enter your measure copper concentration",
+                    hinttext: "Enter the measure copper concentration",
                     obscureText: false,
                     textInputType: TextInputType.number,
                   ),
@@ -168,7 +159,7 @@ class _calculateVolumeState extends State<calculateVolume> {
                     text: TextSpan(
                       children: <TextSpan>[
                         TextSpan(
-                            text: 'Answer: ',
+                            text: 'Answer : ',
                             style: TextStyle(
                                 color: Color(0xff324980),
                                 fontWeight: FontWeight.bold,
@@ -178,7 +169,7 @@ class _calculateVolumeState extends State<calculateVolume> {
                           style: TextStyle(
                               color: Colors.grey,
                               fontWeight: FontWeight.w500,
-                              fontSize: height / 60),
+                              fontSize: height / 50),
                         ),
                       ],
                     ),
@@ -200,12 +191,12 @@ class _calculateVolumeState extends State<calculateVolume> {
                               bottomLeft: const Radius.circular(10.0),
                               bottomRight: const Radius.circular(10.0),
                             )),
-                        width: width / 3.5,
+                        width: width / 3.3,
                         height: height / 15,
                         child: Center(
                             child: Text(
                           '$volumeInLiters',
-                          style: TextStyle(color: Color(0xff8f8f8f)),
+                          style: TextStyle(color: Color(0xff8f8f8f), fontSize: height/65),
                         )),
                       ),
                       Container(
@@ -217,14 +208,14 @@ class _calculateVolumeState extends State<calculateVolume> {
                               bottomLeft: const Radius.circular(10.0),
                               bottomRight: const Radius.circular(10.0),
                             )),
-                        width: width / 3.5,
+                        width: width / 3.3,
                         height: height / 15,
                         child: Center(
                             child: Text(
                           '$volumeInMilliLiter',
-                          style: TextStyle(color: Color(0xff8f8f8f)),
+                          style: TextStyle(color: Color(0xff8f8f8f), fontSize: height/65)),
                         )),
-                      ),
+
                       Container(
                         decoration: new BoxDecoration(
                             color: backgroundColor,
@@ -234,56 +225,85 @@ class _calculateVolumeState extends State<calculateVolume> {
                               bottomLeft: const Radius.circular(10.0),
                               bottomRight: const Radius.circular(10.0),
                             )),
-                        width: width / 3.5,
+                        width: width / 3.3,
                         height: height / 15,
                         child: Center(
                             child: Text(
                           '$volumeInGallons',
-                          style: TextStyle(color: Color(0xff8f8f8f)),
+                          style: TextStyle(color: Color(0xff8f8f8f), fontSize: height/65)),
                         )),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: height / 60,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 12.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Volume Calculate',
-                        style: TextStyle(
-                            color: Color(0xff324980),
-                            fontWeight: FontWeight.bold,
-                            fontSize: height / 40),
-                      ),
-                     SizedBox(width: width/25,),
-                      Center(
-                        child: walkthroghButton(
-                            iconss: Icon(Icons.arrow_forward,color: Colors.white,),
-                            colorss: Colors.black,
-                            focusColor: backgroundColor,
-                            disbaleColor: Colors.blue,
-                            onPressed: () =>
-                                Navigator.pushNamed(context, "/EllipticalShape")
 
-                        ),
-                      ),
                     ],
+                  ),
+                ),
+                SizedBox(
+                  height: height / 20,
+                ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left:8.0, right: 8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                      resetButton(
+                        text: Text("Reset",
+                        ),
+                        onPressed: (){
+                          // Navigator.pushNamed(context, "/CalculateVolume");
+                        },
+                        // focusColor: Colors.red,
+                        // disbaleColor: Colors.black,
+                      ),
+                      volumeCalculate(
+                        text: Text("Calculate Volume",
+                        ),
+                        onPressed: (){
+                          Navigator.pushNamed(context, "/SelectOption");
+                        },
+                        // focusColor: Colors.red,
+                        // disbaleColor: Colors.black,
+                      ),
+                    ],),
                   ),
                 ),
                 SizedBox(
                   height: height / 60,
                 ),
-                Image(
-                  image: AssetImage("images/bottomAnimation.png"),
-                  height: height / 4,
-                  fit: BoxFit.fill,
-                  // width: width/0.8,
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(right: 12.0),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.end,
+                //     children: [
+                //       Text(
+                //         'Volume Calculate',
+                //         style: TextStyle(
+                //             color: Color(0xff324980),
+                //             fontWeight: FontWeight.bold,
+                //             fontSize: height / 40),
+                //       ),
+                //      SizedBox(width: width/25,),
+                //
+                //       Center(
+                //         child: walkthroghButton(
+                //             iconss: Icon(Icons.arrow_forward,color: Colors.white,),
+                //             colorss: Colors.black,
+                //             focusColor: backgroundColor,
+                //             disbaleColor: Colors.blue,
+                //             onPressed: () =>
+                //                 Navigator.pushNamed(context, "/EllipticalShape")
+                //
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+
+                // Image(
+                //   image: AssetImage("images/bottomAnimation.png"),
+                //   height: height / 4,
+                //   fit: BoxFit.fill,
+                //   // width: width/0.8,
+                // ),
               ],
             ),
           ),
@@ -293,7 +313,7 @@ class _calculateVolumeState extends State<calculateVolume> {
   }
 }
 
-List<String> _product = ['Product 1', 'Product 2', 'Product 3', 'Product 4']; //
+List<String> _product = ['OCION BLUE\u{2122}', ]; //
 String _selectedProduct;
-List<String> _volumeUnits = ['Unit 1', 'Unit 2', 'Unit 3', 'Unit 4']; //
+List<String> _volumeUnits = ['LITERS', 'IMP.GALLONS' ,'US GALLONS' ]; //
 String _selectedVolumeUnits;

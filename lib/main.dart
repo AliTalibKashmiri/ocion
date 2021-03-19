@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ocion/Screens/calculateVolume.dart';
 import 'package:ocion/Screens/ellipticalShape.dart';
 import 'package:ocion/Screens/rectanglePoolShape.dart';
+import 'package:ocion/Screens/selectOption.dart';
 import 'package:ocion/Screens/splash.dart';
 import 'package:ocion/Screens/welcomeScreen.dart';
 
@@ -24,6 +25,7 @@ var routes = <String, WidgetBuilder>{
   "/CalculateVolume": (BuildContext context) => calculateVolume(),
   "/EllipticalShape": (BuildContext context) => ellipticalShape(),
   "/RectanglePoolShape": (BuildContext context) => rectanglePoolShape(),
+  "/SelectOption": (BuildContext context) => selectOption(),
 
 };
 

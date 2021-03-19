@@ -127,9 +127,14 @@ class CustomeTableField extends StatelessWidget {
             color:  Color(0xff8f8f8f),
             //fontSize: ,
             //fontFamily: 'workSans',
+            fontSize: height/60
 
           ),
-
+          maxLength: 7,
+          decoration: InputDecoration(
+            hintText: "",
+            counterText: "",
+          ),
           textInputAction: textInputAction!=null?textInputAction:TextInputAction.next,
           keyboardType: textInputType,
           obscureText: obscureText == null ? false : obscureText,

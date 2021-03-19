@@ -13,14 +13,21 @@ class _ellipticalShapeState extends State<ellipticalShape> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    String volumeInLiters = '6545 Liter';
-    String volumeInMilliLiter = '5555 MilliLiter';
-    String volumeInGallons = '56685 Gallons';
+    String volumeInLiters = '6545 L';
+
+    String volumeInGallons = '56685 gal';
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xffffffff),
+        appBar: AppBar(
+          backgroundColor: basicColor,
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
+          title: Text("Round or Elliptical Pond", style: TextStyle(fontSize: height/50),),
+          centerTitle: true,
+        ),
 
-        // appBar: customAppBar1("Sign In"),
 
         body: SingleChildScrollView(
           child: Container(
@@ -30,33 +37,34 @@ class _ellipticalShapeState extends State<ellipticalShape> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
-                  height: height / 30,
+                  height: height / 50,
                 ),
                 Center(
                   child: Image(
                     image: AssetImage("images/logo.png"),
-                    height: height / 6,
+                    height: height / 10,
                   ),
                 ),
-                SizedBox(
-                  height: height / 60,
-                ),
+                // SizedBox(
+                //   height: height / 60,
+                // ),
                 Center(
                   child: Text(
                     'Calculate the pool and spa water',
                     style: TextStyle(
                         color: Colors.grey,
                         fontWeight: FontWeight.w400,
-                        fontSize: height / 40),
+                        fontSize: height / 60),
                   ),
                 ),
                 SizedBox(
                   height: height / 60,
                 ),
-                Center(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Image(
                     image: AssetImage("images/ellipticalShape.png"),
-                    height: height / 3.5,
+                    height: height / 4.3,
                     // width: width/1.8,
                   ),
                 ),
@@ -64,25 +72,28 @@ class _ellipticalShapeState extends State<ellipticalShape> {
                   height: height / 60,
                 ),
                 Center(
-                  child: Text(
-                    'Enter parameters below for your selected units ',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w400,
-                        fontSize: height / 40),
-                  ),
-                ),
-                SizedBox(
-                  height: height / 60,
-                ),
-
-                Center(
                   child: Container(
                     width: width / 1.2,
+                    child: Center(
+                      child: Text(
+                        'Enter parameters below for your selected units ',
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w400,
+                            fontSize: height / 50),
+                      ),
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    width: width / 1.1,
                     child: DataTable(
+                      showBottomBorder: false,
+
                       columnSpacing: 2.0,
                       horizontalMargin: 3.0,
-                     // showBottomBorder: false,
+                      // showBottomBorder: false,
                       //showCheckboxColumn: true,
                       //sortAscending: true,
                       columns: [
@@ -97,20 +108,20 @@ class _ellipticalShapeState extends State<ellipticalShape> {
                         DataColumn(
                             label: Text('Feet',
                                 style: TextStyle(
-                                    fontSize: height / 45,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: height / 50,
+                                    fontWeight: FontWeight.w400,
                                     color: Colors.grey))),
                         DataColumn(
                             label: Text('Yard',
                                 style: TextStyle(
-                                    fontSize: height / 45,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: height / 50,
+                                    fontWeight: FontWeight.w400,
                                     color: Colors.grey))),
                         DataColumn(
                             label: Text('Meters',
                                 style: TextStyle(
-                                    fontSize: height / 45,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: height / 50,
+                                    fontWeight: FontWeight.w400,
                                     color: Colors.grey))),
                       ],
                       rows: [
@@ -129,13 +140,13 @@ class _ellipticalShapeState extends State<ellipticalShape> {
                           cells: [
                             DataCell(Text('Length',
                                 style: TextStyle(
-                                    fontSize: height / 45,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: height / 50,
+                                    fontWeight: FontWeight.w400,
                                     color: Colors.grey))),
                             DataCell(
                               CustomeTableField(
                                 // hinttext: "Enter your measure copper concentration",
-                               // obscureText: false,
+                                // obscureText: false,
                                 textInputType: TextInputType.number,
                               ),
                             ),
@@ -158,8 +169,8 @@ class _ellipticalShapeState extends State<ellipticalShape> {
                         DataRow(cells: [
                           DataCell(Text('Width',
                               style: TextStyle(
-                                  fontSize: height / 45,
-                                  fontWeight: FontWeight.w500,
+                                  fontSize: height / 50,
+                                  fontWeight: FontWeight.w400,
                                   color: Colors.grey))),
                           DataCell(
                             CustomeTableField(
@@ -186,8 +197,8 @@ class _ellipticalShapeState extends State<ellipticalShape> {
                         DataRow(cells: [
                           DataCell(Text('Depth',
                               style: TextStyle(
-                                  fontSize: height / 45,
-                                  fontWeight: FontWeight.w500,
+                                  fontSize: height / 50,
+                                  fontWeight: FontWeight.w400,
                                   color: Colors.grey))),
                           DataCell(
                             CustomeTableField(
@@ -218,21 +229,32 @@ class _ellipticalShapeState extends State<ellipticalShape> {
                 SizedBox(
                   height: height / 60,
                 ),
-                Divider(color: Colors.grey,),
+                Center(
+                  child: Container(
+                    width: width/1.1,
+                      child: Divider(
+                    color: Colors.grey[70],
+                        thickness: 1.0,
+                  )),
+                ),
                 SizedBox(
                   height: height / 50,
                 ),
                 Center(
                   child: Container(
+                    width: width / 1.1,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
                           'Calculated Volume:',
                           style: TextStyle(
                               color: Color(0xff324980),
                               fontWeight: FontWeight.bold,
-                              fontSize: height / 40),
+                              fontSize: height / 55),
+                        ),
+                        SizedBox(
+                          width: width / 70,
                         ),
                         Container(
                           decoration: new BoxDecoration(
@@ -243,13 +265,18 @@ class _ellipticalShapeState extends State<ellipticalShape> {
                                 bottomLeft: const Radius.circular(10.0),
                                 bottomRight: const Radius.circular(10.0),
                               )),
-                          width: width / 4,
+                          width: width / 3.9,
                           height: height / 15,
                           child: Center(
                               child: Text(
                             '$volumeInLiters',
-                            style: TextStyle(color: Color(0xff8f8f8f)),
+                            style: TextStyle(
+                                color: Color(0xff8f8f8f),
+                                fontSize: height / 65),
                           )),
+                        ),
+                        SizedBox(
+                          width: width / 50,
                         ),
                         Container(
                           decoration: new BoxDecoration(
@@ -260,12 +287,14 @@ class _ellipticalShapeState extends State<ellipticalShape> {
                                 bottomLeft: const Radius.circular(10.0),
                                 bottomRight: const Radius.circular(10.0),
                               )),
-                          width: width / 4,
+                          width: width / 3.9,
                           height: height / 15,
                           child: Center(
                               child: Text(
                             '$volumeInGallons',
-                            style: TextStyle(color: Color(0xff8f8f8f)),
+                            style: TextStyle(
+                                color: Color(0xff8f8f8f),
+                                fontSize: height / 65),
                           )),
                         ),
                       ],
@@ -275,40 +304,13 @@ class _ellipticalShapeState extends State<ellipticalShape> {
                 SizedBox(
                   height: height / 60,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 12.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Rectangle Shape',
-                        style: TextStyle(
-                            color: Color(0xff324980),
-                            fontWeight: FontWeight.bold,
-                            fontSize: height / 40),
-                      ),
-                      SizedBox(
-                        width: width / 25,
-                      ),
-                      walkthroghButton(
-                          iconss: Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                          ),
-                          colorss: Colors.black,
-                          focusColor: Colors.blue,
-                          disbaleColor: Colors.blue,
-                          onPressed: () => Navigator.pushNamed(
-                              context, "/RectanglePoolShape")),
-                    ],
-                  ),
-                ),
-                Image(
-                  image: AssetImage("images/bottomAnimation.png"),
-                  height: height / 4,
-                  fit: BoxFit.fill,
-                  // width: width/0.8,
-                ),
+
+                // Image(
+                //   image: AssetImage("images/bottomAnimation.png"),
+                //   height: height / 4,
+                //   fit: BoxFit.fill,
+                //   // width: width/0.8,
+                // ),
               ],
             ),
           ),

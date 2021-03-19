@@ -32,21 +32,23 @@ class _splashScreenState extends State<splashScreen> {
 
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            Image(
-              image:  AssetImage("images/logo.png"),
-              height: height/5,
-
-            ),
-              SizedBox(height: height/5,),
-              Image(
-                image:  AssetImage("images/bottomAnimation.png"),
-                height: height/4,
-               fit: BoxFit.fill,
-               // width: width/0.8,
+            Center(
+              child: Image(
+                image:  AssetImage("images/logo.png"),
+                height: height/5,
 
               ),
+            ),
+
+              // Image(
+              //   image:  AssetImage("images/bottomAnimation.png"),
+              //   height: height/4,
+              //  fit: BoxFit.fill,
+              //  // width: width/0.8,
+              //
+              // ),
           ],)
         ),
       ),
