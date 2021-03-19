@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ocion/Constants.dart';
 import 'package:ocion/components/CustomTextField.dart';
 import 'package:ocion/components/customButtons.dart';
@@ -13,13 +14,20 @@ class _rectanglePoolShapeState extends State<rectanglePoolShape> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    String volumeInLiters = '6545 Liter';
+    String volumeInLiters = '6545 L';
     String volumeInMilliLiter = '5555 MilliLiter';
-    String volumeInGallons = '56685 Gallons';
+    String volumeInGallons = '56685 Gal';
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xffffffff),
-
+        appBar: AppBar(
+          backgroundColor: basicColor,
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
+          title: Text("Rectangular Pond", style: TextStyle(fontSize: height/50),),
+          centerTitle: true,
+        ),
         // appBar: customAppBar1("Sign In"),
 
         body: SingleChildScrollView(
@@ -35,17 +43,18 @@ class _rectanglePoolShapeState extends State<rectanglePoolShape> {
                 Center(
                   child: Image(
                     image: AssetImage("images/logo.png"),
-                    height: height / 6,
+                    height: height / 10,
                   ),
                 ),
                 SizedBox(
                   height: height / 60,
                 ),
 
-                Center(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Image(
                     image: AssetImage("images/poolShape.png"),
-                    height: height / 3.5,
+                    height: height / 4.3,
                     // width: width/1.8,
                   ),
                 ),
@@ -58,16 +67,16 @@ class _rectanglePoolShapeState extends State<rectanglePoolShape> {
                     style: TextStyle(
                         color: Colors.grey,
                         fontWeight: FontWeight.w400,
-                        fontSize: height / 40),
+                        fontSize: height / 50),
                   ),
                 ),
-                SizedBox(
-                  height: height / 60,
-                ),
+
                 Center(
                   child: Container(
-                    width: width / 1.2,
+                    width: width / 1.1,
                     child: DataTable(
+                      showBottomBorder: false,
+
                       columnSpacing: 2.0,
                       horizontalMargin: 3.0,
                       // showBottomBorder: false,
@@ -85,20 +94,20 @@ class _rectanglePoolShapeState extends State<rectanglePoolShape> {
                         DataColumn(
                             label: Text('Feet',
                                 style: TextStyle(
-                                    fontSize: height / 45,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: height / 50,
+                                    fontWeight: FontWeight.w400,
                                     color: Colors.grey))),
                         DataColumn(
                             label: Text('Yard',
                                 style: TextStyle(
-                                    fontSize: height / 45,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: height / 50,
+                                    fontWeight: FontWeight.w400,
                                     color: Colors.grey))),
                         DataColumn(
                             label: Text('Meters',
                                 style: TextStyle(
-                                    fontSize: height / 45,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: height / 50,
+                                    fontWeight: FontWeight.w400,
                                     color: Colors.grey))),
                       ],
                       rows: [
@@ -117,8 +126,8 @@ class _rectanglePoolShapeState extends State<rectanglePoolShape> {
                           cells: [
                             DataCell(Text('Length',
                                 style: TextStyle(
-                                    fontSize: height / 45,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: height / 50,
+                                    fontWeight: FontWeight.w400,
                                     color: Colors.grey))),
                             DataCell(
                               CustomeTableField(
@@ -146,8 +155,8 @@ class _rectanglePoolShapeState extends State<rectanglePoolShape> {
                         DataRow(cells: [
                           DataCell(Text('Width',
                               style: TextStyle(
-                                  fontSize: height / 45,
-                                  fontWeight: FontWeight.w500,
+                                  fontSize: height / 50,
+                                  fontWeight: FontWeight.w400,
                                   color: Colors.grey))),
                           DataCell(
                             CustomeTableField(
@@ -174,8 +183,8 @@ class _rectanglePoolShapeState extends State<rectanglePoolShape> {
                         DataRow(cells: [
                           DataCell(Text('Depth',
                               style: TextStyle(
-                                  fontSize: height / 45,
-                                  fontWeight: FontWeight.w500,
+                                  fontSize: height / 50,
+                                  fontWeight: FontWeight.w400,
                                   color: Colors.grey))),
                           DataCell(
                             CustomeTableField(
@@ -206,25 +215,32 @@ class _rectanglePoolShapeState extends State<rectanglePoolShape> {
                 SizedBox(
                   height: height / 60,
                 ),
-                Divider(color: Colors.grey,),
+                Center(
+                  child: Container(
+                      width: width/1.1,
+                      child: Divider(
+                        color: Colors.grey[70],
+                        thickness: 1.0,
+                      )),
+                ),
                 SizedBox(
                   height: height / 50,
                 ),
                 Center(
 
                   child: Container(
-
+width: width/1.1,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
                           'Calculated Volume:',
                           style: TextStyle(
                               color: Color(0xff324980),
                               fontWeight: FontWeight.bold,
-                              fontSize: height / 40),
+                              fontSize: height / 55),
                         ),
-
+                        SizedBox(width: width/70,),
                         Container(
                           decoration: new BoxDecoration(
                               color: backgroundColor,
@@ -234,14 +250,15 @@ class _rectanglePoolShapeState extends State<rectanglePoolShape> {
                                 bottomLeft: const Radius.circular(10.0),
                                 bottomRight: const Radius.circular(10.0),
                               )),
-                          width: width / 4,
+                          width: width / 3.9,
                           height: height / 15,
                           child: Center(
                               child: Text(
                                 '$volumeInLiters',
-                                style: TextStyle(color: Color(0xff8f8f8f)),
+                                style: TextStyle(color: Color(0xff8f8f8f), fontSize: height/65),
                               )),
                         ),
+                        SizedBox(width: width/50,),
                         Container(
                           decoration: new BoxDecoration(
                               color: backgroundColor,
@@ -251,12 +268,12 @@ class _rectanglePoolShapeState extends State<rectanglePoolShape> {
                                 bottomLeft: const Radius.circular(10.0),
                                 bottomRight: const Radius.circular(10.0),
                               )),
-                          width: width / 4,
+                          width: width / 3.9,
                           height: height / 15,
                           child: Center(
                               child: Text(
                                 '$volumeInGallons',
-                                style: TextStyle(color: Color(0xff8f8f8f)),
+                                style: TextStyle(color: Color(0xff8f8f8f, ), fontSize: height/65),
                               )),
                         ),
                       ],
@@ -268,12 +285,12 @@ class _rectanglePoolShapeState extends State<rectanglePoolShape> {
                 ),
 
 
-                Image(
-                  image: AssetImage("images/bottomAnimation.png"),
-                  height: height / 4,
-                  fit: BoxFit.fill,
-                  // width: width/0.8,
-                ),
+                // Image(
+                //   image: AssetImage("images/bottomAnimation.png"),
+                //   height: height / 4,
+                //   fit: BoxFit.fill,
+                //   // width: width/0.8,
+                // ),
 
               ],
             ),
